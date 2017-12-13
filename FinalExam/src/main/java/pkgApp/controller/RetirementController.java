@@ -1,7 +1,6 @@
 package pkgApp.controller;
 
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -72,13 +71,8 @@ public class RetirementController implements Initializable {
 			Ret.setdAnnualReturnRetired(Double.parseDouble(txtRetiredReturn.getText()));
 			Ret.setdRequiredIncome(Double.parseDouble(txtRequiredIncome.getText()));
 			Ret.setdMonthlySSI(Double.parseDouble(txtMonthlySSI.getText()));
-            double MonthlyAmountSaved = Ret.AmountToSave();
-            double TotalAmountSaved = Ret.TotalAmountSaved();
 
-            DecimalFormat df = new DecimalFormat("#,###.00");
-
-            String StrMonthlyAmountSaved = df.format(MonthlyAmountSaved);
-            String StrTotalAmountSaved= df.format(TotalAmountSaved);
+          
 
 		}
 
@@ -89,7 +83,6 @@ public class RetirementController implements Initializable {
     	if (txtYearsToWork.getText().isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("It can not be empty");
-    		alert.show();
     		return false;
 					}
     	try {
@@ -97,35 +90,30 @@ public class RetirementController implements Initializable {
     		} catch (NumberFormatException e) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("You must input a valid integer");
-    			alert.show();
     			return false;
     			}
 
     	if (txtAnnualReturn.getText().isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("It can not be empty");
-    		alert.show();
     		return false;
     		}
     	try {
-    		double workReturn = Double.parseDouble(txtAnnualReturn.getText());
-    		if (workReturn < 0 || workReturn > 0.2) {
+    		double AnnualReturn = Double.parseDouble(txtAnnualReturn.getText());
+    		if (AnnualReturn < 0 || AnnualReturn > 0.2) {
     			Alert alert= new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("You must input a valid number b/w 0 and 0.2");
-    			alert.show();
     			return false;
     			}
     		} catch (NumberFormatException e) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("You must input a valid number");
-    			alert.show();
     			return false;
     			}
 
     	if (txtYearsRetired.getText().isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("It can not be empty");
-    		alert.show();
     		return false;
     		}
     	try {
@@ -133,35 +121,30 @@ public class RetirementController implements Initializable {
     		} catch (NumberFormatException e) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("You must input a valid integer");
-    			alert.show();
     			return false;
     			}
 
     	if (txtRetiredReturn.getText().isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("It can not be empty");
-    		alert.show();
     		return false;
     		}
     	try {
-    		double RReturn = Double.parseDouble(txtRetiredReturn.getText());
-    		if (RReturn < 0 || RReturn > 0.03) {
+    		double RetiredReturn = Double.parseDouble(txtRetiredReturn.getText());
+    		if (RetiredReturn < 0 || RetiredReturn > 0.03) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("you must input a valid number b/w 0 and 0.03");
-    			alert.show();
     			return false;
     			}
     		} catch (NumberFormatException e) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("You must input a number");
-    			alert.show();
     			return false;
     			}
 
     	if (txtRequiredIncome.getText().isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("It can not be empty");
-    		alert.show();
     		return false;
     		}
     	try {
@@ -169,22 +152,19 @@ public class RetirementController implements Initializable {
     		} catch (NumberFormatException e) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
     			alert.setContentText("You must input a valid number");
-    			alert.show();
     			return false;
     			}
 
     	if (txtMonthlySSI.getText().isEmpty()) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("It can not be empty");
-    		alert.show();
     		return false;
     		}
     	try {
     		Double.parseDouble(txtMonthlySSI.getText());
     		} catch (NumberFormatException e) {
     			Alert alert = new Alert(Alert.AlertType.ERROR);
-    			alert.setContentText("Y");
-    			alert.show();
+    			alert.setContentText("You must input a valid number");
     			return false;
     			}
     	return true;
